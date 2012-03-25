@@ -56,11 +56,11 @@ Notice that the PERL line is prefixed by #: it will be ignored by the conformity
 
 PROCSSOR
 
-A PROCESSOR takes the same dataset but and do the same thing than the parser but then produce a list of aggregation data.
+A PROCESSOR takes the same dataset but and do the same thing than the parser, rounding the value instead of reproducing it, and then produce a list of aggregation data.
 
 Internally you have a first key (second field of input), a second one (third field of input), and a value (fourth one)
 
-The aggregation is a sorted list of sorted key with a sum of all value. The sum is made in float but display as an int.
+The aggregation is a sorted list of sorted key with a sum of all value. The sum is made in float but display as an int (not rounded: truncated).
 
 input:
 A,B,C,D
