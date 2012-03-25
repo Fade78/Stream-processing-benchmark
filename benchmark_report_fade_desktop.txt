@@ -1,0 +1,37 @@
+Logging to benchmark_report.txt
+Creating output dir output
+Creation successful
+Missing data file.
+Generating data file.
+Data file stats
+d990cca71b2730c9b28a8dfebcd3c1de  output/data.txt
+ 1000000  4054996 33567481 output/data.txt
+-rw-rw-r--. 1 fade fade 33M 25 mars  15:44 output/data.txt
+Running PERL5 SIMPLE PARSER
+
+real	0m1.736s
+user	0m1.704s
+sys	0m0.062s
+Running PERL5 SIMPLE PROCESSOR
+
+real	0m10.858s
+user	0m10.529s
+sys	0m0.321s
+Running PYTHON3 SIMPLE PARSER (regex parsing)
+
+real	0m12.352s
+user	0m12.272s
+sys	0m0.106s
+Report is correct (bf8a49b3b77889c8541f82fded36aff8).
+Running PYTHON3 SIMPLE PARSER (string function parsing)
+
+real	0m5.743s
+user	0m5.675s
+sys	0m0.113s
+Report is not correct (ref:bf8a49b3b77889c8541f82fded36aff8 vs 29ca05daa02603da1d78bc9c7d5d9121)!
+Running PYTHON3 SIMPLE PROCESSOR
+
+real	0m32.343s
+user	0m31.815s
+sys	0m0.482s
+Report is correct (76c1a86809c210b688b581c905d32a6b).

@@ -1,0 +1,6 @@
+# This file is for demonstration only
+1	This	IsAnExample	1
+2	This	IsTooAnExample	2.4
+2	This	IsTooAnExample	2.7
+1	That	IsAMalformedline
+3	That	IsAMalformedline	Too

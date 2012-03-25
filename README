@@ -1,0 +1,88 @@
+Stream-processing-benchmark
+
+Finding the best way to process stream of text data for each programming language.
+
+This is a benchmark for testing different coding patterns for different languages. The test is about text parsing and processing speed.
+
+To run the benchmark, simply go to the bench directory and the type:
+
+bash benchmark.sh
+
+It should run six programs:
+- (optional) datagenerator will generate a data set file (which, I hope will be the same for everybody). The dataset stays between run, so this program is called once.
+- Three PARSERs (one of them producing an incorrect result)
+- Two PROCESSORs
+
+You can compare with my results:
+cat benchmark_report_fade_laptop.txt
+cat benchmark_report_fade_desktop.txt
+
+TRY YOUR OWN!
+
+THE DATASET:
+The dataset is a four column set as follow:
+integer[tab]string1[tab]string2[tab]float
+It may contains commentary lines (beginning with #) and malformed lines (wrong number of fields or fields containing wrong type). For simplicity, float is only integer with an optional [.integer] part.
+
+THE RULES:
+There is two groups of programs:
+
+PARSER
+A PARSER takes the dataset as input and produce the output described bellow and some statistics:
+
+F1[tab]F2[tab]F3[tab]F4 -> F1,F4,F3,F2
+
+Every non conforming (and comment) line is discarded. The end of the ouput is a stat line like this one:
+parsed line: X, commentary line: Y, unknown line: Z. You shall figure out X,Y, and Z :)
+
+In doubt, the PERL SIMPLE PARSER is the reference for the parser category. Except for # lines, the output of the PARSER must be the same than PERL SIMPLE PARSER.
+
+EXAMPLE :
+$ cat common/tinydataset.txt
+# This file is for demonstration only
+1	This	IsAnExample	1
+2	This	IsTooAnExample	2.4
+2	This	IsTooAnExample	2.7
+1	That	IsAMalformedline
+3	That	IsAMalformedline	Too
+$ cat common/tinydataset.txt | perl perl5/simpleparser.pl 
+1,1,IsAnExample,This
+2,2.4,IsTooAnExample,This
+2,2.7,IsTooAnExample,This
+#PERL version 5.14.2
+parsed line: 6, commentary line: 1, unknown line: 2.
+
+Notice that the PERL line is prefixed by #: it will be ignored by the conformity check. The last line, with statistics is part of the output.
+
+PROCSSOR
+
+A PROCESSOR takes the same dataset but and do the same thing than the parser but then produce a list of aggregation data.
+
+Internally you have a first key (second field of input), a second one (third field of input), and a value (fourth one)
+
+The aggregation is a sorted list of sorted key with a sum of all value. The sum is made in float but display as an int.
+
+input:
+A,B,C,D
+E,B,F,G
+H,B,C,I
+output:
+B: (C:int(D+I)) (F:G)
+
+EXAMPLE:
+
+$ cat common/tinydataset.txt | perl perl5/simpleprocessor.pl 2> /dev/null
+#PERL REFERENCE PROCESSOR
+#TRANSFORMED INPUT
+1,1,IsAnExample,This
+2,2,IsTooAnExample,This
+2,3,IsTooAnExample,This
+#DATADUMP
+This: (IsAnExample:1) (IsTooAnExample:5)
+#REPORT
+#PERL REFERENCE PROCESSOR
+#perl version: 5.14.2
+parsed line: 6, commentary line: 1, unknown line: 2, keystat: 2.
+
+
+

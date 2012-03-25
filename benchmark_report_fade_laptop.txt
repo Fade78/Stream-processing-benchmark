@@ -1,0 +1,32 @@
+Data file stats
+d990cca71b2730c9b28a8dfebcd3c1de  output/data.txt
+ 1000000  4054996 33567481 output/data.txt
+-rw-rw-r--. 1 fade fade 33M 25 mars  15:30 output/data.txt
+Running PERL5 SIMPLE PARSER
+
+real	0m3.263s
+user	0m3.149s
+sys	0m0.225s
+Running PERL5 SIMPLE PROCESSOR
+
+real	0m17.872s
+user	0m17.060s
+sys	0m0.888s
+Running PYTHON3 SIMPLE PARSER (regex parsing)
+
+real	0m21.986s
+user	0m21.718s
+sys	0m0.472s
+Report is correct (bf8a49b3b77889c8541f82fded36aff8).
+Running PYTHON3 SIMPLE PARSER (string function parsing)
+
+real	0m10.201s
+user	0m10.007s
+sys	0m0.413s
+Report is not correct (ref:bf8a49b3b77889c8541f82fded36aff8 vs 29ca05daa02603da1d78bc9c7d5d9121)!
+Running PYTHON3 SIMPLE PROCESSOR
+
+real	0m56.845s
+user	0m55.028s
+sys	0m1.387s
+Report is correct (76c1a86809c210b688b581c905d32a6b).
